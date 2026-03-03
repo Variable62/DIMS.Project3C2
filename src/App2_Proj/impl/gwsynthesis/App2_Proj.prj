@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE gowin-synthesis-project>
+<Project>
+    <Version>beta</Version>
+    <Device id="GW1NR-9C" package="QFN88P" speed="6" partNumber="GW1NR-LV9QN88PC6/I5"/>
+    <FileList>
+        <File path="C:\Users\Asus\Documents\App2_Project\src\App2_Proj\src\Top.v" type="verilog"/>
+        <File path="C:\Users\Asus\Documents\App2_Project\src\App2_Proj\src\gowin_rpll\pll_module.v" type="verilog"/>
+        <File path="C:\Users\Asus\Documents\App2_Project\src\App2_Proj\src\ModeControl.v" type="verilog"/>
+        <File path="C:\Users\Asus\Documents\App2_Project\src\App2_Proj\src\ResetGen.v" type="verilog"/>
+        <File path="C:\Users\Asus\Documents\App2_Project\src\App2_Proj\src\LedDebug.v" type="verilog"/>
+        <File path="C:\Users\Asus\Documents\App2_Project\src\App2_Proj\src\PhaseCounter.v" type="verilog"/>
+        <File path="C:\Gowin\Gowin_V1.9.11.02_x64\IDE\data\ipcores\GAO_LITE\GW_AO_0\gw_ao_mem_ctrl.v" type="gao"/>
+        <File path="C:\Gowin\Gowin_V1.9.11.02_x64\IDE\data\ipcores\GAO_LITE\GW_AO_0\gw_ao_top.v" type="gao"/>
+        <File path="C:\Gowin\Gowin_V1.9.11.02_x64\IDE\data\ipcores\GAO_LITE\GW_CON\gw_con_top.v" type="gao"/>
+        <File path="C:\Gowin\Gowin_V1.9.11.02_x64\IDE\data\ipcores\gw_jtag.v" type="gao"/>
+        <File path="C:\Users\Asus\Documents\App2_Project\src\App2_Proj\impl\gwsynthesis\RTL_GAO\gw_gao_top.v" type="gao"/>
+    </FileList>
+    <OptionList>
+        <Option type="disable_insert_pad" value="0"/>
+        <Option type="global_freq" value="50.000"/>
+        <Option type="include_path" value="C:/Gowin/Gowin_V1.9.11.02_x64/IDE/data/ipcores/GAO_LITE"/>
+        <Option type="include_path" value="C:/Users/Asus/Documents/App2_Project/src/App2_Proj/impl/gwsynthesis/RTL_GAO"/>
+        <Option type="looplimit" value="2000"/>
+        <Option type="output_file" value="C:\Users\Asus\Documents\App2_Project\src\App2_Proj\impl\gwsynthesis\App2_Proj.vg"/>
+        <Option type="print_all_synthesis_warning" value="0"/>
+        <Option type="ram_rw_check" value="0"/>
+        <Option type="vcc" value="1.2"/>
+        <Option type="verilog_language" value="verilog-2001"/>
+        <Option type="vhdl_language" value="vhdl-1993"/>
+    </OptionList>
+</Project>

@@ -1,0 +1,45 @@
+<?xml version="1" encoding="UTF-8"?>
+<GAO_CONFIG>
+    <Version>3.0</Version>
+    <Mode>Lite</Mode>
+    <AoCore_Lite index="0" sample_clock="wPll_Clk" trig_type="0" capture_amount="256" implemention="0" input_register_enabled="0" capture_init_data_enabled="0" module_name="top">
+        <SignalList>
+            <Bus capture_enable="true" name="wCountPhase[18:0]">
+                <Signal>wCountPhase[18]</Signal>
+                <Signal>wCountPhase[17]</Signal>
+                <Signal>wCountPhase[16]</Signal>
+                <Signal>wCountPhase[15]</Signal>
+                <Signal>wCountPhase[14]</Signal>
+                <Signal>wCountPhase[13]</Signal>
+                <Signal>wCountPhase[12]</Signal>
+                <Signal>wCountPhase[11]</Signal>
+                <Signal>wCountPhase[10]</Signal>
+                <Signal>wCountPhase[9]</Signal>
+                <Signal>wCountPhase[8]</Signal>
+                <Signal>wCountPhase[7]</Signal>
+                <Signal>wCountPhase[6]</Signal>
+                <Signal>wCountPhase[5]</Signal>
+                <Signal>wCountPhase[4]</Signal>
+                <Signal>wCountPhase[3]</Signal>
+                <Signal>wCountPhase[2]</Signal>
+                <Signal>wCountPhase[1]</Signal>
+                <Signal>wCountPhase[0]</Signal>
+            </Bus>
+            <Signal capture_enable="true">wDone</Signal>
+            <Bus capture_enable="true" name="u_phase_counter/rVs_sync[2:0]">
+                <Signal>u_phase_counter/rVs_sync[2]</Signal>
+                <Signal>u_phase_counter/rVs_sync[1]</Signal>
+                <Signal>u_phase_counter/rVs_sync[0]</Signal>
+            </Bus>
+            <Bus capture_enable="true" name="u_phase_counter/rVd_sync[2:0]">
+                <Signal>u_phase_counter/rVd_sync[2]</Signal>
+                <Signal>u_phase_counter/rVd_sync[1]</Signal>
+                <Signal>u_phase_counter/rVd_sync[0]</Signal>
+            </Bus>
+            <Signal capture_enable="true">u_phase_counter/VdiffPulse</Signal>
+            <Signal capture_enable="true">u_phase_counter/VsPulse</Signal>
+            <Signal capture_enable="true">u_phase_counter/rCounting</Signal>
+        </SignalList>
+    </AoCore_Lite>
+    <GAO_ID>1101011001101001</GAO_ID>
+</GAO_CONFIG>

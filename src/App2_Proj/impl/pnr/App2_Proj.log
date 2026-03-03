@@ -1,0 +1,30 @@
+Reading netlist file: "C:\Users\Asus\Documents\App2_Project\src\App2_Proj\impl\gwsynthesis\App2_Proj.vg"
+Parsing netlist file "C:\Users\Asus\Documents\App2_Project\src\App2_Proj\impl\gwsynthesis\App2_Proj.vg" completed
+Processing netlist completed
+Reading constraint file: "C:\Users\Asus\Documents\App2_Project\src\App2_Proj\src\App2_Proj.cst"
+Physical Constraint parsed completed
+Running placement......
+[10%] Placement Phase 0 completed
+[20%] Placement Phase 1 completed
+[30%] Placement Phase 2 completed
+WARN  (TA1132) :  'tck_pad_i' was determined to be a clock but was not created.
+[50%] Placement Phase 3 completed
+Running routing......
+[60%] Routing Phase 0 completed
+[70%] Routing Phase 1 completed
+[80%] Routing Phase 2 completed
+[90%] Routing Phase 3 completed
+Running timing analysis......
+[95%] Timing analysis completed
+Placement and routing completed
+Bitstream generation in progress......
+Bitstream generation completed
+Running power analysis......
+[100%] Power analysis completed
+Generate file "C:\Users\Asus\Documents\App2_Project\src\App2_Proj\impl\pnr\App2_Proj.power.html" completed
+Generate file "C:\Users\Asus\Documents\App2_Project\src\App2_Proj\impl\pnr\App2_Proj.pin.html" completed
+Generate file "C:\Users\Asus\Documents\App2_Project\src\App2_Proj\impl\pnr\App2_Proj.rpt.html" completed
+Generate file "C:\Users\Asus\Documents\App2_Project\src\App2_Proj\impl\pnr\App2_Proj.rpt.txt" completed
+Generate file "C:\Users\Asus\Documents\App2_Project\src\App2_Proj\impl\pnr\App2_Proj.tr.html" completed
+Tue Mar  3 07:03:47 2026
+
