@@ -1,68 +1,61 @@
-//----------------------------------------//
-// Filename     : phase_counter.v
-// Description  : High-precision Phase Counter (48MHz)
-// Project      : ImpedanceAnalyzer (KMITL)
-//----------------------------------------//
-
 module phase_counter (
     input  wire        CLK48MHz,
     input  wire        RESETn,
-    input  wire [3:0]  Mode,         // สำหรับรองรับหลายความถี่ในอนาคต
-    input  wire        VdiffPulse,
-    input  wire        VsPulse,
-    
-    output reg         Done,
-    output reg  [18:0] CountPhase    // เก็บค่าจำนวน Clock ที่นับได้
+    input  wire [3:0]  Mode,         // รับจาก Top Module (ESP32 Mode)
+    input  wire        VdiffPulse,   // สัญญาณ Vdiff จาก Analog
+    input  wire        VsPulse,      // สัญญาณ Vs จาก Analog
+    output reg         Done,         // ส่งไปปลุก data_sender ให้เริ่มส่ง
+    output reg  [18:0] CountPhase    // ค่าที่นับได้ (19-bit)
 );
 
-    //----------------------------------------//
-    // Signal Declaration
-    //----------------------------------------//
-    reg [18:0] rCounter;
-    reg        rCounting;
-
-    reg [2:0]  rVs_sync;
-    reg [2:0]  rVd_sync;
-
-    wire wVs_rise = (~rVs_sync[2] & rVs_sync[1]); 
-    wire wVd_rise = (~rVd_sync[2] & rVd_sync[1]);
-
+    // --- ส่วนการ Sync สัญญาณเพื่อกัน Noise (Double Flip-Flop) ---
+    reg [2:0] rVs_sync;
+    reg [2:0] rVd_sync;
+    
     always @(posedge CLK48MHz) begin
         rVs_sync <= {rVs_sync[1:0], VsPulse};
         rVd_sync <= {rVd_sync[1:0], VdiffPulse};
-    end 
-    //----------------------------------------//
-    // Counter Control Logic
-    //----------------------------------------//
+    end
+
+    // ตรวจจับขอบขาขึ้น (Rising Edge Detection)
+    wire wVs_rise = (rVs_sync[2:1] == 2'b01);
+    wire wVd_rise = (rVd_sync[2:1] == 2'b01);
+
+    // --- ส่วนการนับค่า (Core Logic) ---
+    reg [18:0] rCounter;
+    reg        rCounting;
+
     always @(posedge CLK48MHz or negedge RESETn) begin
         if (!RESETn) begin
             rCounter   <= 19'd0;
             rCounting  <= 1'b0;
-            CountPhase <= 19'd0;
             Done       <= 1'b0;
-        end 
-        else begin
-            // Default: Clear Done flag ทุกรอบ clock
-            Done <= 1'b0;
+            CountPhase <= 19'd0;
+        end else begin
+            Done <= 1'b0; // เคลียร์ Done ทุก Clock Cycle
 
-            // CASE 1: เจอขอบ Vs (Start counting)
+            // 1. เจอขอบ Vs: เริ่มนับใหม่เสมอ (Auto-Reset)
             if (wVs_rise) begin
-                rCounter  <= 19'd1;     // เริ่มนับที่ 1 ทันทีในรอบที่เจอ Edge
+                rCounter  <= 19'd0;
                 rCounting <= 1'b1;
-            end
+            end 
             
-            // CASE 2: เจอขอบ Vdiff ขณะที่กำลังนับอยู่ (Stop & Store)
+            // 2. เจอขอบ Vdiff: หยุดนับและส่งข้อมูลออก
             else if (wVd_rise && rCounting) begin
                 rCounting  <= 1'b0;
-                CountPhase <= rCounter; // บันทึกค่าสะสม
-                Done       <= 1'b1;     // ส่งสัญญาณบอก Module ถัดไปว่าข้อมูลพร้อมแล้ว
+                CountPhase <= rCounter; // ล็อคค่าที่นับได้
+                Done       <= 1'b1;     // ปลุก data_sender
             end
             
-            // CASE 3: กำลังนับปกติ (Accumulate)
+            // 3. ป้องกันการนับค้าง (Timeout) ถ้าไม่มีสัญญาณหยุด
+            else if (rCounter == 19'h7FFFF) begin
+                rCounting <= 1'b0;
+            end
+            
+            // 4. กำลังนับ: เพิ่มค่าไปเรื่อยๆ ตามความถี่ 48MHz
             else if (rCounting) begin
-                rCounter <= rCounter + 19'd1;
+                rCounter <= rCounter + 1;
             end
         end
     end
-
 endmodule

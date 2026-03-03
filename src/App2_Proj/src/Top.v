@@ -5,7 +5,10 @@
     input   wire    Write,
     input   wire    VdiffPulse,
     input   wire    VsPulse,
+    input   wire    ACK,
 
+    output  wire    Req,
+    output  wire    [3:0] CountOut, // <-----To ESP
     output  wire    [1:0] LedMode
 );
     wire        wPll_RESETn;
@@ -14,7 +17,9 @@
     wire        wFg_RESETn;   
     wire        [3:0]wMode;
     wire        [18:0]wCountPhase;
-    wire    wDone;
+    wire        wDone;
+
+
 
     pll_module u_pll_module(
         .clkin(CLK27),
@@ -49,10 +54,20 @@
         .CountPhase(wCountPhase)
     );
 
-    LED_Debug u_LED_Debug(
-        .CLK48M(wPll_Clk),
-        .ExtRESETn(wFg_RESETn),
-        .Mode(wMode),
-        .LedMode(LedMode)
+    data_sender u_data_sender(
+        .CLK48MHz(wPll_Clk),
+        .RESETn(wFg_RESETn),
+        .start(wDone),
+        .CountPhase(wCountPhase),
+        .ACK(ACK),
+        .Req(Req),
+        .CountOut(CountOut) // <-----To ESP
     );
+
+     LED_Debug u_LED_Debug(
+         .CLK48M(wPll_Clk),
+         .ExtRESETn(wFg_RESETn),
+         .Mode(wMode),
+         .LedMode(LedMode)
+     );
 endmodule

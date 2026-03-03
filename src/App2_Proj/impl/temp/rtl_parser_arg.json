@@ -24,6 +24,10 @@
   {
    "Path" : "C:/Users/Asus/Documents/App2_Project/src/App2_Proj/src/PhaseCounter.v",
    "Type" : "verilog"
+  },
+  {
+   "Path" : "C:/Users/Asus/Documents/App2_Project/src/App2_Proj/src/SendData.v",
+   "Type" : "verilog"
   }
  ],
  "IncludePath" : [

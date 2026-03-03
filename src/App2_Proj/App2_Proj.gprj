@@ -9,9 +9,11 @@
         <File path="src/ModeControl.v" type="file.verilog" enable="1"/>
         <File path="src/PhaseCounter.v" type="file.verilog" enable="1"/>
         <File path="src/ResetGen.v" type="file.verilog" enable="1"/>
+        <File path="src/SendData.v" type="file.verilog" enable="1"/>
         <File path="src/Top.v" type="file.verilog" enable="1"/>
         <File path="src/gowin_rpll/pll_module.v" type="file.verilog" enable="1"/>
         <File path="src/App2_Proj.cst" type="file.cst" enable="1"/>
+        <File path="src/App2_Proj.sdc" type="file.sdc" enable="1"/>
         <File path="src/App2_Proj.rao" type="file.gao" enable="1"/>
     </FileList>
 </Project>
