@@ -1,12 +1,12 @@
 GowinSynthesis start
 Running parser ...
+Analyzing Verilog file 'C:\Users\Asus\Documents\App2_Project\src\App2_Proj\src\LedDebug.v'
+Analyzing Verilog file 'C:\Users\Asus\Documents\App2_Project\src\App2_Proj\src\ModeControl.v'
+Analyzing Verilog file 'C:\Users\Asus\Documents\App2_Project\src\App2_Proj\src\PhaseCounter.v'
+Analyzing Verilog file 'C:\Users\Asus\Documents\App2_Project\src\App2_Proj\src\ResetGen.v'
+Analyzing Verilog file 'C:\Users\Asus\Documents\App2_Project\src\App2_Proj\src\SendData.v'
 Analyzing Verilog file 'C:\Users\Asus\Documents\App2_Project\src\App2_Proj\src\Top.v'
 Analyzing Verilog file 'C:\Users\Asus\Documents\App2_Project\src\App2_Proj\src\gowin_rpll\pll_module.v'
-Analyzing Verilog file 'C:\Users\Asus\Documents\App2_Project\src\App2_Proj\src\ModeControl.v'
-Analyzing Verilog file 'C:\Users\Asus\Documents\App2_Project\src\App2_Proj\src\ResetGen.v'
-Analyzing Verilog file 'C:\Users\Asus\Documents\App2_Project\src\App2_Proj\src\LedDebug.v'
-Analyzing Verilog file 'C:\Users\Asus\Documents\App2_Project\src\App2_Proj\src\PhaseCounter.v'
-Analyzing Verilog file 'C:\Users\Asus\Documents\App2_Project\src\App2_Proj\src\SendData.v'
 Analyzing Verilog file 'C:\Gowin\Gowin_V1.9.11.02_x64\IDE\data\ipcores\GAO_LITE\GW_AO_0\gw_ao_mem_ctrl.v'
 Analyzing included file 'C:\Users\Asus\Documents\App2_Project\src\App2_Proj\impl\gwsynthesis\RTL_GAO\ao_0\gw_ao_top_define.v'("C:\Gowin\Gowin_V1.9.11.02_x64\IDE\data\ipcores\GAO_LITE\GW_AO_0\gw_ao_mem_ctrl.v":133)
 Back to file 'C:\Gowin\Gowin_V1.9.11.02_x64\IDE\data\ipcores\GAO_LITE\GW_AO_0\gw_ao_mem_ctrl.v'("C:\Gowin\Gowin_V1.9.11.02_x64\IDE\data\ipcores\GAO_LITE\GW_AO_0\gw_ao_mem_ctrl.v":133)
@@ -24,16 +24,16 @@ Analyzing included file 'C:\Gowin\Gowin_V1.9.11.02_x64\IDE\data\ipcores\GAO_LITE
 Back to file 'C:\Gowin\Gowin_V1.9.11.02_x64\IDE\data\ipcores\GAO_LITE\GW_CON\gw_con_top.v'("C:\Gowin\Gowin_V1.9.11.02_x64\IDE\data\ipcores\GAO_LITE\GW_CON\gw_con_top.v":367)
 Analyzing Verilog file 'C:\Gowin\Gowin_V1.9.11.02_x64\IDE\data\ipcores\gw_jtag.v'
 Analyzing Verilog file 'C:\Users\Asus\Documents\App2_Project\src\App2_Proj\impl\gwsynthesis\RTL_GAO\gw_gao_top.v'
-Compiling module 'top'("C:\Users\Asus\Documents\App2_Project\src\App2_Proj\src\Top.v":1)
-Compiling module 'pll_module'("C:\Users\Asus\Documents\App2_Project\src\App2_Proj\src\gowin_rpll\pll_module.v":10)
-Compiling module 'ResetGen_Module'("C:\Users\Asus\Documents\App2_Project\src\App2_Proj\src\ResetGen.v":13)
+Compiling module 'LED_Debug'("C:\Users\Asus\Documents\App2_Project\src\App2_Proj\src\LedDebug.v":12)
+WARN  (EX3791) : Expression size 4 truncated to fit in target size 2("C:\Users\Asus\Documents\App2_Project\src\App2_Proj\src\LedDebug.v":32)
 Compiling module 'ModeControl'("C:\Users\Asus\Documents\App2_Project\src\App2_Proj\src\ModeControl.v":1)
 Compiling module 'phase_counter'("C:\Users\Asus\Documents\App2_Project\src\App2_Proj\src\PhaseCounter.v":1)
 WARN  (EX3791) : Expression size 20 truncated to fit in target size 19("C:\Users\Asus\Documents\App2_Project\src\App2_Proj\src\PhaseCounter.v":57)
+Compiling module 'ResetGen_Module'("C:\Users\Asus\Documents\App2_Project\src\App2_Proj\src\ResetGen.v":13)
 Compiling module 'data_sender'("C:\Users\Asus\Documents\App2_Project\src\App2_Proj\src\SendData.v":1)
-WARN  (EX3791) : Expression size 4 truncated to fit in target size 3("C:\Users\Asus\Documents\App2_Project\src\App2_Proj\src\SendData.v":65)
-Compiling module 'LED_Debug'("C:\Users\Asus\Documents\App2_Project\src\App2_Proj\src\LedDebug.v":12)
-WARN  (EX3791) : Expression size 4 truncated to fit in target size 2("C:\Users\Asus\Documents\App2_Project\src\App2_Proj\src\LedDebug.v":32)
+WARN  (EX3791) : Expression size 4 truncated to fit in target size 3("C:\Users\Asus\Documents\App2_Project\src\App2_Proj\src\SendData.v":62)
+Compiling module 'top'("C:\Users\Asus\Documents\App2_Project\src\App2_Proj\src\Top.v":1)
+Compiling module 'pll_module'("C:\Users\Asus\Documents\App2_Project\src\App2_Proj\src\gowin_rpll\pll_module.v":10)
 Compiling module '**'("C:\Gowin\Gowin_V1.9.11.02_x64\IDE\data\ipcores\GAO_LITE\GW_AO_0\gw_ao_mem_ctrl.v":133)
 Extracting RAM for identifier '**'("C:\Gowin\Gowin_V1.9.11.02_x64\IDE\data\ipcores\GAO_LITE\GW_AO_0\gw_ao_mem_ctrl.v":133)
 Compiling module '**'("C:\Gowin\Gowin_V1.9.11.02_x64\IDE\data\ipcores\GAO_LITE\GW_AO_0\gw_ao_top.v":685)

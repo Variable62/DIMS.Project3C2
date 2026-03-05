@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Module name="top" Lut="1" T_Register="311(0)" T_Lut="309(1)" T_Bsram="1(0)">
- <SubModule name="gw_gao_inst_0" Register="195" Lut="186" Bsram="1" T_Register="195(195)" T_Lut="186(186)" T_Bsram="1(1)"/>
+<Module name="top" Lut="1" T_Register="284(0)" T_Lut="300(1)" T_Bsram="1(0)">
+ <SubModule name="gw_gao_inst_0" Register="168" Lut="173" Bsram="1" T_Register="168(168)" T_Lut="173(173)" T_Bsram="1(1)"/>
  <SubModule name="u_pll_module"/>
- <SubModule name="u_ResetGen_Module" Register="33" Lut="58" T_Register="33(33)" T_Lut="58(58)"/>
+ <SubModule name="u_ResetGen_Module" Register="33" Lut="61" T_Register="33(33)" T_Lut="61(61)"/>
  <SubModule name="u_ModeControl" Register="4" Lut="2" T_Register="4(4)" T_Lut="2(2)"/>
- <SubModule name="u_phase_counter" Register="46" Lut="38" T_Register="46(46)" T_Lut="38(38)"/>
+ <SubModule name="u_phase_counter" Register="46" Lut="39" T_Register="46(46)" T_Lut="39(39)"/>
  <SubModule name="u_data_sender" Register="31" Lut="24" T_Register="31(31)" T_Lut="24(24)"/>
  <SubModule name="u_LED_Debug" Register="2" T_Register="2(2)"/>
 </Module>

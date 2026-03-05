@@ -26,20 +26,7 @@
                 <Signal>wCountPhase[0]</Signal>
             </Bus>
             <Signal capture_enable="true">wDone</Signal>
-            <Bus capture_enable="true" name="u_phase_counter/rVs_sync[2:0]">
-                <Signal>u_phase_counter/rVs_sync[2]</Signal>
-                <Signal>u_phase_counter/rVs_sync[1]</Signal>
-                <Signal>u_phase_counter/rVs_sync[0]</Signal>
-            </Bus>
-            <Bus capture_enable="true" name="u_phase_counter/rVd_sync[2:0]">
-                <Signal>u_phase_counter/rVd_sync[2]</Signal>
-                <Signal>u_phase_counter/rVd_sync[1]</Signal>
-                <Signal>u_phase_counter/rVd_sync[0]</Signal>
-            </Bus>
-            <Signal capture_enable="true">u_phase_counter/VdiffPulse</Signal>
-            <Signal capture_enable="true">u_phase_counter/VsPulse</Signal>
-            <Signal capture_enable="true">u_phase_counter/rCounting</Signal>
         </SignalList>
     </AoCore_Lite>
-    <GAO_ID>1101011001101001</GAO_ID>
+    <GAO_ID>1011110101100100</GAO_ID>
 </GAO_CONFIG>

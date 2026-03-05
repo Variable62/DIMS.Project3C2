@@ -2,11 +2,7 @@
  "Device" : "GW1NR-9C",
  "Files" : [
   {
-   "Path" : "C:/Users/Asus/Documents/App2_Project/src/App2_Proj/src/Top.v",
-   "Type" : "verilog"
-  },
-  {
-   "Path" : "C:/Users/Asus/Documents/App2_Project/src/App2_Proj/src/gowin_rpll/pll_module.v",
+   "Path" : "C:/Users/Asus/Documents/App2_Project/src/App2_Proj/src/LedDebug.v",
    "Type" : "verilog"
   },
   {
@@ -14,19 +10,23 @@
    "Type" : "verilog"
   },
   {
-   "Path" : "C:/Users/Asus/Documents/App2_Project/src/App2_Proj/src/ResetGen.v",
-   "Type" : "verilog"
-  },
-  {
-   "Path" : "C:/Users/Asus/Documents/App2_Project/src/App2_Proj/src/LedDebug.v",
-   "Type" : "verilog"
-  },
-  {
    "Path" : "C:/Users/Asus/Documents/App2_Project/src/App2_Proj/src/PhaseCounter.v",
    "Type" : "verilog"
   },
   {
+   "Path" : "C:/Users/Asus/Documents/App2_Project/src/App2_Proj/src/ResetGen.v",
+   "Type" : "verilog"
+  },
+  {
    "Path" : "C:/Users/Asus/Documents/App2_Project/src/App2_Proj/src/SendData.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "C:/Users/Asus/Documents/App2_Project/src/App2_Proj/src/Top.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "C:/Users/Asus/Documents/App2_Project/src/App2_Proj/src/gowin_rpll/pll_module.v",
    "Type" : "verilog"
   }
  ],

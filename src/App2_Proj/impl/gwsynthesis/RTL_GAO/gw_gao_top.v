@@ -19,15 +19,6 @@ module gw_gao(
     \wCountPhase[1] ,
     \wCountPhase[0] ,
     wDone,
-    \u_phase_counter/rVs_sync[2] ,
-    \u_phase_counter/rVs_sync[1] ,
-    \u_phase_counter/rVs_sync[0] ,
-    \u_phase_counter/rVd_sync[2] ,
-    \u_phase_counter/rVd_sync[1] ,
-    \u_phase_counter/rVd_sync[0] ,
-    \u_phase_counter/VdiffPulse ,
-    \u_phase_counter/VsPulse ,
-    \u_phase_counter/rCounting ,
     wPll_Clk,
     tms_pad_i,
     tck_pad_i,
@@ -55,15 +46,6 @@ input \wCountPhase[2] ;
 input \wCountPhase[1] ;
 input \wCountPhase[0] ;
 input wDone;
-input \u_phase_counter/rVs_sync[2] ;
-input \u_phase_counter/rVs_sync[1] ;
-input \u_phase_counter/rVs_sync[0] ;
-input \u_phase_counter/rVd_sync[2] ;
-input \u_phase_counter/rVd_sync[1] ;
-input \u_phase_counter/rVd_sync[0] ;
-input \u_phase_counter/VdiffPulse ;
-input \u_phase_counter/VsPulse ;
-input \u_phase_counter/rCounting ;
 input wPll_Clk;
 input tms_pad_i;
 input tck_pad_i;
@@ -90,15 +72,6 @@ wire \wCountPhase[2] ;
 wire \wCountPhase[1] ;
 wire \wCountPhase[0] ;
 wire wDone;
-wire \u_phase_counter/rVs_sync[2] ;
-wire \u_phase_counter/rVs_sync[1] ;
-wire \u_phase_counter/rVs_sync[0] ;
-wire \u_phase_counter/rVd_sync[2] ;
-wire \u_phase_counter/rVd_sync[1] ;
-wire \u_phase_counter/rVd_sync[0] ;
-wire \u_phase_counter/VdiffPulse ;
-wire \u_phase_counter/VsPulse ;
-wire \u_phase_counter/rCounting ;
 wire wPll_Clk;
 wire tms_pad_i;
 wire tck_pad_i;
@@ -173,7 +146,7 @@ gw_con_top  u_icon_top(
 
 ao_top u_ao_top(
     .control(control0[9:0]),
-    .data_i({\wCountPhase[18] ,\wCountPhase[17] ,\wCountPhase[16] ,\wCountPhase[15] ,\wCountPhase[14] ,\wCountPhase[13] ,\wCountPhase[12] ,\wCountPhase[11] ,\wCountPhase[10] ,\wCountPhase[9] ,\wCountPhase[8] ,\wCountPhase[7] ,\wCountPhase[6] ,\wCountPhase[5] ,\wCountPhase[4] ,\wCountPhase[3] ,\wCountPhase[2] ,\wCountPhase[1] ,\wCountPhase[0] ,wDone,\u_phase_counter/rVs_sync[2] ,\u_phase_counter/rVs_sync[1] ,\u_phase_counter/rVs_sync[0] ,\u_phase_counter/rVd_sync[2] ,\u_phase_counter/rVd_sync[1] ,\u_phase_counter/rVd_sync[0] ,\u_phase_counter/VdiffPulse ,\u_phase_counter/VsPulse ,\u_phase_counter/rCounting }),
+    .data_i({\wCountPhase[18] ,\wCountPhase[17] ,\wCountPhase[16] ,\wCountPhase[15] ,\wCountPhase[14] ,\wCountPhase[13] ,\wCountPhase[12] ,\wCountPhase[11] ,\wCountPhase[10] ,\wCountPhase[9] ,\wCountPhase[8] ,\wCountPhase[7] ,\wCountPhase[6] ,\wCountPhase[5] ,\wCountPhase[4] ,\wCountPhase[3] ,\wCountPhase[2] ,\wCountPhase[1] ,\wCountPhase[0] ,wDone}),
     .clk_i(wPll_Clk)
 );
 
