@@ -1,3 +1,14 @@
+//----------------------------------------//
+// Filename     : top.v
+// Description  : Connect all module
+// Company      : KMITL
+// Project      : Impedance Analyzer
+//----------------------------------------//
+// Version      : 1.0
+// Date         : 6 March 2026
+// Author       : Adisorn Sommart
+// Remark       : New Creation
+//----------------------------------------//
  module top(
     input   wire    CLK27,
     input   wire    ExtRESETn,
