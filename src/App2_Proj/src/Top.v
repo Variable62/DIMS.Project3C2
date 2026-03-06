@@ -1,6 +1,6 @@
 //----------------------------------------//
-// Filename     : top.v
-// Description  : Connect all module
+// Filename     : data_sender.v
+// Description  : Send Data To ESP32
 // Company      : KMITL
 // Project      : Impedance Analyzer
 //----------------------------------------//
@@ -9,28 +9,43 @@
 // Author       : Adisorn Sommart
 // Remark       : New Creation
 //----------------------------------------//
- module top(
+module top(
     input   wire    CLK27,
     input   wire    ExtRESETn,
-    input   wire    [3:0]ESPMode,
+    input   wire    [3:0] ESPMode,
     input   wire    Write,
     input   wire    VdiffPulse,
     input   wire    VsPulse,
     input   wire    ACK,
 
     output  wire    Req,
-    output  wire    [3:0] CountOut, // <-----To ESP
+    output  wire    [3:0] CountOut, // To ESP
     output  wire    [1:0] LedMode
 );
+    //--- Internal Signals ---
     wire        wPll_RESETn;
     wire        wPll_Clk;
     wire        wPll_Lock;
     wire        wFg_RESETn;   
-    wire        [3:0]wMode;
-    wire        [18:0]wCountPhase;
-    wire        wDone;
+    wire        [3:0] wMode;
+    
+    wire [18:0] wPhaseVal;
+    wire        wPhaseDone;
+    wire [18:0] wWidthVal;
+    wire        wWidthDone;
 
+    reg  [18:0] rFinalCount;
+    reg         rFinalDone;
 
+    always @(*) begin
+        if (wMode == 4'd5) begin
+            rFinalCount = wWidthVal; 
+            rFinalDone  = wWidthDone;
+        end else begin
+            rFinalCount = wPhaseVal;  
+            rFinalDone  = wPhaseDone;
+        end
+    end
 
     pll_module u_pll_module(
         .clkin(CLK27),
@@ -61,24 +76,34 @@
         .Mode(wMode),
         .VdiffPulse(VdiffPulse),
         .VsPulse(VsPulse),
-        .Done(wDone),
-        .CountPhase(wCountPhase)
+        .Done(wPhaseDone),
+        .CountPhase(wPhaseVal)
+    );
+
+    pulse_width_counter u_pulse_width_counter (
+        .CLK48MHz(wPll_Clk),
+        .RESETn(wFg_RESETn),
+        .Mode(wMode),
+        .VdiffPulse(VdiffPulse),
+        .Done(wWidthDone),
+        .CountWidth(wWidthVal)
     );
 
     data_sender u_data_sender(
         .CLK48MHz(wPll_Clk),
         .RESETn(wFg_RESETn),
-        .start(wDone),
-        .CountPhase(wCountPhase),
+        .start(rFinalDone),       
+        .CountPhase(rFinalCount),   
         .ACK(ACK),
         .Req(Req),
-        .CountOut(CountOut) // <-----To ESP
+        .CountOut(CountOut) 
     );
 
-     LED_Debug u_LED_Debug(
-         .CLK48M(wPll_Clk),
-         .ExtRESETn(wFg_RESETn),
-         .Mode(wMode),
-         .LedMode(LedMode)
-     );
+    LED_Debug u_LED_Debug(
+        .CLK48M(wPll_Clk),
+        .ExtRESETn(wFg_RESETn),
+        .Mode(wMode),
+        .LedMode(LedMode)
+    );
+
 endmodule

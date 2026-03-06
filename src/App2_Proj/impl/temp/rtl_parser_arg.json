@@ -28,6 +28,10 @@
   {
    "Path" : "C:/Users/Asus/Documents/App2_Project/src/App2_Proj/src/gowin_rpll/pll_module.v",
    "Type" : "verilog"
+  },
+  {
+   "Path" : "C:/Users/Asus/Documents/App2_Project/src/App2_Proj/src/PulseWidthCounter.v",
+   "Type" : "verilog"
   }
  ],
  "IncludePath" : [

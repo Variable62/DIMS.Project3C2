@@ -4,29 +4,55 @@
     <Mode>Lite</Mode>
     <AoCore_Lite index="0" sample_clock="wPll_Clk" trig_type="0" capture_amount="256" implemention="0" input_register_enabled="0" capture_init_data_enabled="0" module_name="top">
         <SignalList>
-            <Bus capture_enable="true" name="wCountPhase[18:0]">
-                <Signal>wCountPhase[18]</Signal>
-                <Signal>wCountPhase[17]</Signal>
-                <Signal>wCountPhase[16]</Signal>
-                <Signal>wCountPhase[15]</Signal>
-                <Signal>wCountPhase[14]</Signal>
-                <Signal>wCountPhase[13]</Signal>
-                <Signal>wCountPhase[12]</Signal>
-                <Signal>wCountPhase[11]</Signal>
-                <Signal>wCountPhase[10]</Signal>
-                <Signal>wCountPhase[9]</Signal>
-                <Signal>wCountPhase[8]</Signal>
-                <Signal>wCountPhase[7]</Signal>
-                <Signal>wCountPhase[6]</Signal>
-                <Signal>wCountPhase[5]</Signal>
-                <Signal>wCountPhase[4]</Signal>
-                <Signal>wCountPhase[3]</Signal>
-                <Signal>wCountPhase[2]</Signal>
-                <Signal>wCountPhase[1]</Signal>
-                <Signal>wCountPhase[0]</Signal>
+            <Bus capture_enable="true" name="ESPMode[3:0]">
+                <Signal>ESPMode[3]</Signal>
+                <Signal>ESPMode[2]</Signal>
+                <Signal>ESPMode[1]</Signal>
+                <Signal>ESPMode[0]</Signal>
             </Bus>
-            <Signal capture_enable="true">wDone</Signal>
+            <Bus capture_enable="true" name="wWidthVal[18:0]">
+                <Signal>wWidthVal[18]</Signal>
+                <Signal>wWidthVal[17]</Signal>
+                <Signal>wWidthVal[16]</Signal>
+                <Signal>wWidthVal[15]</Signal>
+                <Signal>wWidthVal[14]</Signal>
+                <Signal>wWidthVal[13]</Signal>
+                <Signal>wWidthVal[12]</Signal>
+                <Signal>wWidthVal[11]</Signal>
+                <Signal>wWidthVal[10]</Signal>
+                <Signal>wWidthVal[9]</Signal>
+                <Signal>wWidthVal[8]</Signal>
+                <Signal>wWidthVal[7]</Signal>
+                <Signal>wWidthVal[6]</Signal>
+                <Signal>wWidthVal[5]</Signal>
+                <Signal>wWidthVal[4]</Signal>
+                <Signal>wWidthVal[3]</Signal>
+                <Signal>wWidthVal[2]</Signal>
+                <Signal>wWidthVal[1]</Signal>
+                <Signal>wWidthVal[0]</Signal>
+            </Bus>
+            <Bus capture_enable="true" name="wPhaseVal[18:0]">
+                <Signal>wPhaseVal[18]</Signal>
+                <Signal>wPhaseVal[17]</Signal>
+                <Signal>wPhaseVal[16]</Signal>
+                <Signal>wPhaseVal[15]</Signal>
+                <Signal>wPhaseVal[14]</Signal>
+                <Signal>wPhaseVal[13]</Signal>
+                <Signal>wPhaseVal[12]</Signal>
+                <Signal>wPhaseVal[11]</Signal>
+                <Signal>wPhaseVal[10]</Signal>
+                <Signal>wPhaseVal[9]</Signal>
+                <Signal>wPhaseVal[8]</Signal>
+                <Signal>wPhaseVal[7]</Signal>
+                <Signal>wPhaseVal[6]</Signal>
+                <Signal>wPhaseVal[5]</Signal>
+                <Signal>wPhaseVal[4]</Signal>
+                <Signal>wPhaseVal[3]</Signal>
+                <Signal>wPhaseVal[2]</Signal>
+                <Signal>wPhaseVal[1]</Signal>
+                <Signal>wPhaseVal[0]</Signal>
+            </Bus>
         </SignalList>
     </AoCore_Lite>
-    <GAO_ID>1011110101100100</GAO_ID>
+    <GAO_ID>0110100110010001</GAO_ID>
 </GAO_CONFIG>

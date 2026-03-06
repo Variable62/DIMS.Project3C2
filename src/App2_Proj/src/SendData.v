@@ -19,15 +19,20 @@ module data_sender (
     output reg Req,  
     output reg [3:0] CountOut  
 );
+  //----------------------------------------//
+  // Signal Declaration
+  //----------------------------------------//
   parameter IDLE = 3'd0, DataReady = 3'd1, WaitAck = 3'd2, WaitNext = 3'd3;
 
   reg [ 2:0] state;
   reg [ 2:0] nibble_cnt;
   reg [19:0] data_latch;
   reg [ 1:0] rAck_sync;
-
-  always @(posedge CLK48MHz) rAck_sync <= {rAck_sync[0], ACK};
   wire wAck = rAck_sync[1];
+//----------------------------------------//
+// Process Declaration
+//----------------------------------------//
+  always @(posedge CLK48MHz) rAck_sync <= {rAck_sync[0], ACK};
 
   always @(posedge CLK48MHz or negedge RESETn) begin
     if (!RESETn) begin

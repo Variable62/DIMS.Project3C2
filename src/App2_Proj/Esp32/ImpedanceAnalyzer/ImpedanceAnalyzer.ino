@@ -1,4 +1,6 @@
 #include <Arduino.h>
+#include <Wire.h>
+#include <Adafruit_MCP4725.h>
 
 #define MODE0 16
 #define MODE1 17
@@ -13,9 +15,15 @@
 #define REQ 27
 #define ACK 23
 
-#define SW 13
+#define SW_FREQ 13  
+#define SW_TYPE 14 
 
-uint8_t currentMode = 0; 
+#define DAC_VALUE 2048 // defult 
+
+Adafruit_MCP4725 dac;
+
+uint8_t freqMode = 0;     
+uint8_t measureMode = 5;  
 
 void sendMode(uint8_t modeValue) {
   digitalWrite(MODE0, (modeValue >> 0) & 1);
@@ -35,23 +43,30 @@ uint32_t getPhaseFromFPGA() {
         while (digitalRead(REQ) == LOW) {
             if (micros() - timeout > 10000) return 0; 
         }
-
-        delayMicroseconds(5);
+        
+        // --- จุดที่ต้องเพิ่ม ---
+        delayMicroseconds(10); // รอให้ Data ในสาย D0-D3 นิ่งจริงๆ
+        
         uint8_t nibble = (digitalRead(D3) << 3) | (digitalRead(D2) << 2) | 
                          (digitalRead(D1) << 1) | (digitalRead(D0) << 0);
-        
         fullData |= ((uint32_t)nibble << (i * 4)); 
-
+        
         digitalWrite(ACK, HIGH);
         while (digitalRead(REQ) == HIGH); 
         digitalWrite(ACK, LOW);
-        delayMicroseconds(2); // wait FPGA Clear state
+        
+        delayMicroseconds(5); // รอให้ FPGA เคลียร์ State
     }
     return fullData;
 }
+
 void setup() {
   Serial.begin(115200);
   
+  if (dac.begin(0x61)) {
+    dac.setVoltage(DAC_VALUE, false);
+  }
+
   pinMode(MODE0, OUTPUT); 
   pinMode(MODE1, OUTPUT);
   pinMode(MODE2, OUTPUT); 
@@ -63,50 +78,70 @@ void setup() {
   pinMode(D3, INPUT);
   pinMode(REQ, INPUT);
   pinMode(ACK, OUTPUT);
-  pinMode(SW, INPUT_PULLUP);
+  pinMode(SW_FREQ, INPUT_PULLUP);
+  pinMode(SW_TYPE, INPUT_PULLUP); 
   
   digitalWrite(ACK, LOW);
   digitalWrite(WRITE, LOW);
-
-  Serial.println("System Ready");
-  sendMode(currentMode);
+  
+  sendMode(measureMode); 
 }
 
 void loop() {
+  if(count) {
 
-  static bool lastSwState = HIGH;
-  bool currentSwState = digitalRead(SW);
+  }
+  else
 
-  if (lastSwState == HIGH && currentSwState == LOW) {
+
+  static bool lastFreqSw = HIGH;
+  bool currentFreqSw = digitalRead(SW_FREQ);
+  if (lastFreqSw == HIGH && currentFreqSw == LOW) {
     delay(50); 
-    if (digitalRead(SW) == LOW) {
-      currentMode = (currentMode + 1) % 4; 
-      sendMode(currentMode); 
-      Serial.print(">> Mode Changed to: ");
-      Serial.println(currentMode);
+    if (digitalRead(SW_FREQ) == LOW) {
+      freqMode = (freqMode + 1) % 4; 
+      sendMode(freqMode);
+      Serial.print("Freq Mode: "); Serial.println(freqMode);
     }
   }
-  lastSwState = currentSwState;
+  lastFreqSw = currentFreqSw;
+
+  static bool lastTypeSw = HIGH;
+  bool currentTypeSw = digitalRead(SW_TYPE);
+  if (lastTypeSw == HIGH && currentTypeSw == LOW) {
+    delay(50);
+    if (digitalRead(SW_TYPE) == LOW) {
+      measureMode = (measureMode == 4) ? 5 : 4; 
+      sendMode(measureMode); 
+      Serial.println(measureMode == 4 ? "Type: PHASE" : "Type: PULSE");
+    }
+  }
+  lastTypeSw = currentTypeSw;
 
   if (digitalRead(REQ) == HIGH) {
     uint32_t count = getPhaseFromFPGA(); 
-
-    if (count > 0 && count <= 1048575) {
+    if (count > 0) {
       float T_val = 1.0;
-      switch (currentMode) {
-        case 0: T_val = 480.0;    break; // 100 kHz
-        case 1: T_val = 4800.0;   break; // 10 kHz
-        case 2: T_val = 48000.0;  break; // 1 kHz
-        case 3: T_val = 480000.0; break; // 100 Hz
+      switch (freqMode) {
+        case 0: T_val = 480.0;    break; 
+        case 1: T_val = 4800.0;   break; 
+        case 2: T_val = 48000.0;  break; 
+        case 3: T_val = 480000.0; break; 
       }
 
-      float phaseDeg = ((float)count / T_val) * 360.0;
+      float result = ((float)count / T_val) * 360.0;
+      if (measureMode == 4) {
 
-      Serial.print("Mode : "); Serial.print(currentMode);
-      Serial.print(" | Count: "); Serial.print(count);
-      Serial.print(" | Phase: "); Serial.print(phaseDeg, 2);
-      Serial.println(" deg");
-      delay(500);
+        Serial.printf("Type: %d (PHASE) | M: %d | Count Phase: %-8d | Phase: %.2f deg\n", 
+                      measureMode, freqMode, count, result);
+      } 
+      else if (measureMode == 5) {
+
+        Serial.printf("Type: %d (WIDTH) | M: %d | Count Width: %-8d\n", 
+                      measureMode, freqMode, count, result);
+      }
+
+      delay(200); 
     }
   }
 }

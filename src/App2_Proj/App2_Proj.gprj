@@ -8,6 +8,7 @@
         <File path="src/LedDebug.v" type="file.verilog" enable="1"/>
         <File path="src/ModeControl.v" type="file.verilog" enable="1"/>
         <File path="src/PhaseCounter.v" type="file.verilog" enable="1"/>
+        <File path="src/PulseWidthCounter.v" type="file.verilog" enable="1"/>
         <File path="src/ResetGen.v" type="file.verilog" enable="1"/>
         <File path="src/SendData.v" type="file.verilog" enable="1"/>
         <File path="src/Top.v" type="file.verilog" enable="1"/>

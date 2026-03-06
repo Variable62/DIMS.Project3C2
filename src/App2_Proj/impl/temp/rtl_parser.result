@@ -9,7 +9,7 @@
   "SubInsts" : [
    {
     "InstFile" : "C:/Users/Asus/Documents/App2_Project/src/App2_Proj/src/Top.v",
-    "InstLine" : 35,
+    "InstLine" : 50,
     "InstName" : "u_pll_module",
     "ModuleFile" : "C:/Users/Asus/Documents/App2_Project/src/App2_Proj/src/gowin_rpll/pll_module.v",
     "ModuleLine" : 10,
@@ -17,7 +17,7 @@
    },
    {
     "InstFile" : "C:/Users/Asus/Documents/App2_Project/src/App2_Proj/src/Top.v",
-    "InstLine" : 42,
+    "InstLine" : 57,
     "InstName" : "u_ResetGen_Module",
     "ModuleFile" : "C:/Users/Asus/Documents/App2_Project/src/App2_Proj/src/ResetGen.v",
     "ModuleLine" : 13,
@@ -25,7 +25,7 @@
    },
    {
     "InstFile" : "C:/Users/Asus/Documents/App2_Project/src/App2_Proj/src/Top.v",
-    "InstLine" : 50,
+    "InstLine" : 65,
     "InstName" : "u_ModeControl",
     "ModuleFile" : "C:/Users/Asus/Documents/App2_Project/src/App2_Proj/src/ModeControl.v",
     "ModuleLine" : 12,
@@ -33,7 +33,7 @@
    },
    {
     "InstFile" : "C:/Users/Asus/Documents/App2_Project/src/App2_Proj/src/Top.v",
-    "InstLine" : 58,
+    "InstLine" : 73,
     "InstName" : "u_phase_counter",
     "ModuleFile" : "C:/Users/Asus/Documents/App2_Project/src/App2_Proj/src/PhaseCounter.v",
     "ModuleLine" : 12,
@@ -41,7 +41,15 @@
    },
    {
     "InstFile" : "C:/Users/Asus/Documents/App2_Project/src/App2_Proj/src/Top.v",
-    "InstLine" : 68,
+    "InstLine" : 83,
+    "InstName" : "u_pulse_width_counter",
+    "ModuleFile" : "C:/Users/Asus/Documents/App2_Project/src/App2_Proj/src/PulseWidthCounter.v",
+    "ModuleLine" : 12,
+    "ModuleName" : "pulse_width_counter"
+   },
+   {
+    "InstFile" : "C:/Users/Asus/Documents/App2_Project/src/App2_Proj/src/Top.v",
+    "InstLine" : 92,
     "InstName" : "u_data_sender",
     "ModuleFile" : "C:/Users/Asus/Documents/App2_Project/src/App2_Proj/src/SendData.v",
     "ModuleLine" : 12,
@@ -49,7 +57,7 @@
    },
    {
     "InstFile" : "C:/Users/Asus/Documents/App2_Project/src/App2_Proj/src/Top.v",
-    "InstLine" : 78,
+    "InstLine" : 102,
     "InstName" : "u_LED_Debug",
     "ModuleFile" : "C:/Users/Asus/Documents/App2_Project/src/App2_Proj/src/LedDebug.v",
     "ModuleLine" : 12,

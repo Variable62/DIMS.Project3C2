@@ -4,7 +4,7 @@
 -cst C:\Users\Asus\Documents\App2_Project\src\App2_Proj\src\App2_Proj.cst
 -cfg C:\Users\Asus\Documents\App2_Project\src\App2_Proj\impl\pnr\device.cfg
 -sdc C:\Users\Asus\Documents\App2_Project\src\App2_Proj\src\App2_Proj.sdc
--gao_crc 1011110101100100
+-gao_crc 0110100110010001
 -bit
 -tr
 -ph

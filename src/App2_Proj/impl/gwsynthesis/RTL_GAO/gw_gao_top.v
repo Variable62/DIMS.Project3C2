@@ -1,24 +1,46 @@
 module gw_gao(
-    \wCountPhase[18] ,
-    \wCountPhase[17] ,
-    \wCountPhase[16] ,
-    \wCountPhase[15] ,
-    \wCountPhase[14] ,
-    \wCountPhase[13] ,
-    \wCountPhase[12] ,
-    \wCountPhase[11] ,
-    \wCountPhase[10] ,
-    \wCountPhase[9] ,
-    \wCountPhase[8] ,
-    \wCountPhase[7] ,
-    \wCountPhase[6] ,
-    \wCountPhase[5] ,
-    \wCountPhase[4] ,
-    \wCountPhase[3] ,
-    \wCountPhase[2] ,
-    \wCountPhase[1] ,
-    \wCountPhase[0] ,
-    wDone,
+    \ESPMode[3] ,
+    \ESPMode[2] ,
+    \ESPMode[1] ,
+    \ESPMode[0] ,
+    \wWidthVal[18] ,
+    \wWidthVal[17] ,
+    \wWidthVal[16] ,
+    \wWidthVal[15] ,
+    \wWidthVal[14] ,
+    \wWidthVal[13] ,
+    \wWidthVal[12] ,
+    \wWidthVal[11] ,
+    \wWidthVal[10] ,
+    \wWidthVal[9] ,
+    \wWidthVal[8] ,
+    \wWidthVal[7] ,
+    \wWidthVal[6] ,
+    \wWidthVal[5] ,
+    \wWidthVal[4] ,
+    \wWidthVal[3] ,
+    \wWidthVal[2] ,
+    \wWidthVal[1] ,
+    \wWidthVal[0] ,
+    \wPhaseVal[18] ,
+    \wPhaseVal[17] ,
+    \wPhaseVal[16] ,
+    \wPhaseVal[15] ,
+    \wPhaseVal[14] ,
+    \wPhaseVal[13] ,
+    \wPhaseVal[12] ,
+    \wPhaseVal[11] ,
+    \wPhaseVal[10] ,
+    \wPhaseVal[9] ,
+    \wPhaseVal[8] ,
+    \wPhaseVal[7] ,
+    \wPhaseVal[6] ,
+    \wPhaseVal[5] ,
+    \wPhaseVal[4] ,
+    \wPhaseVal[3] ,
+    \wPhaseVal[2] ,
+    \wPhaseVal[1] ,
+    \wPhaseVal[0] ,
     wPll_Clk,
     tms_pad_i,
     tck_pad_i,
@@ -26,52 +48,96 @@ module gw_gao(
     tdo_pad_o
 );
 
-input \wCountPhase[18] ;
-input \wCountPhase[17] ;
-input \wCountPhase[16] ;
-input \wCountPhase[15] ;
-input \wCountPhase[14] ;
-input \wCountPhase[13] ;
-input \wCountPhase[12] ;
-input \wCountPhase[11] ;
-input \wCountPhase[10] ;
-input \wCountPhase[9] ;
-input \wCountPhase[8] ;
-input \wCountPhase[7] ;
-input \wCountPhase[6] ;
-input \wCountPhase[5] ;
-input \wCountPhase[4] ;
-input \wCountPhase[3] ;
-input \wCountPhase[2] ;
-input \wCountPhase[1] ;
-input \wCountPhase[0] ;
-input wDone;
+input \ESPMode[3] ;
+input \ESPMode[2] ;
+input \ESPMode[1] ;
+input \ESPMode[0] ;
+input \wWidthVal[18] ;
+input \wWidthVal[17] ;
+input \wWidthVal[16] ;
+input \wWidthVal[15] ;
+input \wWidthVal[14] ;
+input \wWidthVal[13] ;
+input \wWidthVal[12] ;
+input \wWidthVal[11] ;
+input \wWidthVal[10] ;
+input \wWidthVal[9] ;
+input \wWidthVal[8] ;
+input \wWidthVal[7] ;
+input \wWidthVal[6] ;
+input \wWidthVal[5] ;
+input \wWidthVal[4] ;
+input \wWidthVal[3] ;
+input \wWidthVal[2] ;
+input \wWidthVal[1] ;
+input \wWidthVal[0] ;
+input \wPhaseVal[18] ;
+input \wPhaseVal[17] ;
+input \wPhaseVal[16] ;
+input \wPhaseVal[15] ;
+input \wPhaseVal[14] ;
+input \wPhaseVal[13] ;
+input \wPhaseVal[12] ;
+input \wPhaseVal[11] ;
+input \wPhaseVal[10] ;
+input \wPhaseVal[9] ;
+input \wPhaseVal[8] ;
+input \wPhaseVal[7] ;
+input \wPhaseVal[6] ;
+input \wPhaseVal[5] ;
+input \wPhaseVal[4] ;
+input \wPhaseVal[3] ;
+input \wPhaseVal[2] ;
+input \wPhaseVal[1] ;
+input \wPhaseVal[0] ;
 input wPll_Clk;
 input tms_pad_i;
 input tck_pad_i;
 input tdi_pad_i;
 output tdo_pad_o;
 
-wire \wCountPhase[18] ;
-wire \wCountPhase[17] ;
-wire \wCountPhase[16] ;
-wire \wCountPhase[15] ;
-wire \wCountPhase[14] ;
-wire \wCountPhase[13] ;
-wire \wCountPhase[12] ;
-wire \wCountPhase[11] ;
-wire \wCountPhase[10] ;
-wire \wCountPhase[9] ;
-wire \wCountPhase[8] ;
-wire \wCountPhase[7] ;
-wire \wCountPhase[6] ;
-wire \wCountPhase[5] ;
-wire \wCountPhase[4] ;
-wire \wCountPhase[3] ;
-wire \wCountPhase[2] ;
-wire \wCountPhase[1] ;
-wire \wCountPhase[0] ;
-wire wDone;
+wire \ESPMode[3] ;
+wire \ESPMode[2] ;
+wire \ESPMode[1] ;
+wire \ESPMode[0] ;
+wire \wWidthVal[18] ;
+wire \wWidthVal[17] ;
+wire \wWidthVal[16] ;
+wire \wWidthVal[15] ;
+wire \wWidthVal[14] ;
+wire \wWidthVal[13] ;
+wire \wWidthVal[12] ;
+wire \wWidthVal[11] ;
+wire \wWidthVal[10] ;
+wire \wWidthVal[9] ;
+wire \wWidthVal[8] ;
+wire \wWidthVal[7] ;
+wire \wWidthVal[6] ;
+wire \wWidthVal[5] ;
+wire \wWidthVal[4] ;
+wire \wWidthVal[3] ;
+wire \wWidthVal[2] ;
+wire \wWidthVal[1] ;
+wire \wWidthVal[0] ;
+wire \wPhaseVal[18] ;
+wire \wPhaseVal[17] ;
+wire \wPhaseVal[16] ;
+wire \wPhaseVal[15] ;
+wire \wPhaseVal[14] ;
+wire \wPhaseVal[13] ;
+wire \wPhaseVal[12] ;
+wire \wPhaseVal[11] ;
+wire \wPhaseVal[10] ;
+wire \wPhaseVal[9] ;
+wire \wPhaseVal[8] ;
+wire \wPhaseVal[7] ;
+wire \wPhaseVal[6] ;
+wire \wPhaseVal[5] ;
+wire \wPhaseVal[4] ;
+wire \wPhaseVal[3] ;
+wire \wPhaseVal[2] ;
+wire \wPhaseVal[1] ;
+wire \wPhaseVal[0] ;
 wire wPll_Clk;
 wire tms_pad_i;
 wire tck_pad_i;
@@ -146,7 +212,7 @@ gw_con_top  u_icon_top(
 
 ao_top u_ao_top(
     .control(control0[9:0]),
-    .data_i({\wCountPhase[18] ,\wCountPhase[17] ,\wCountPhase[16] ,\wCountPhase[15] ,\wCountPhase[14] ,\wCountPhase[13] ,\wCountPhase[12] ,\wCountPhase[11] ,\wCountPhase[10] ,\wCountPhase[9] ,\wCountPhase[8] ,\wCountPhase[7] ,\wCountPhase[6] ,\wCountPhase[5] ,\wCountPhase[4] ,\wCountPhase[3] ,\wCountPhase[2] ,\wCountPhase[1] ,\wCountPhase[0] ,wDone}),
+    .data_i({\ESPMode[3] ,\ESPMode[2] ,\ESPMode[1] ,\ESPMode[0] ,\wWidthVal[18] ,\wWidthVal[17] ,\wWidthVal[16] ,\wWidthVal[15] ,\wWidthVal[14] ,\wWidthVal[13] ,\wWidthVal[12] ,\wWidthVal[11] ,\wWidthVal[10] ,\wWidthVal[9] ,\wWidthVal[8] ,\wWidthVal[7] ,\wWidthVal[6] ,\wWidthVal[5] ,\wWidthVal[4] ,\wWidthVal[3] ,\wWidthVal[2] ,\wWidthVal[1] ,\wWidthVal[0] ,\wPhaseVal[18] ,\wPhaseVal[17] ,\wPhaseVal[16] ,\wPhaseVal[15] ,\wPhaseVal[14] ,\wPhaseVal[13] ,\wPhaseVal[12] ,\wPhaseVal[11] ,\wPhaseVal[10] ,\wPhaseVal[9] ,\wPhaseVal[8] ,\wPhaseVal[7] ,\wPhaseVal[6] ,\wPhaseVal[5] ,\wPhaseVal[4] ,\wPhaseVal[3] ,\wPhaseVal[2] ,\wPhaseVal[1] ,\wPhaseVal[0] }),
     .clk_i(wPll_Clk)
 );
 
