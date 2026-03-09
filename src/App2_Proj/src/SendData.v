@@ -13,7 +13,7 @@ module data_sender (
     input wire CLK48MHz,
     input wire RESETn,
     input wire start,  
-    input wire [18:0] CountPhase,  
+    input wire [18:0] FinalCount,  
     input wire ACK,  
 
     output reg Req,  
@@ -46,7 +46,7 @@ module data_sender (
         IDLE: begin
           Req <= 0;
           if (start) begin
-            data_latch <= {1'b0, CountPhase}; 
+            data_latch <= {1'b0, FinalCount}; 
             nibble_cnt <= 0;
             state <= DataReady;
           end

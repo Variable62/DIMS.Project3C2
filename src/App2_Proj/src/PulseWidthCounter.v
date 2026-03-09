@@ -25,6 +25,8 @@ module pulse_width_counter (
   reg  [ 2:0] rVd_sync;
   reg  [18:0] rCounter;
   reg         rCounting;
+  wire wVd_rise = (rVd_sync[2:1] == 2'b01);
+  wire wVd_fall = (rVd_sync[2:1] == 2'b10);
 //----------------------------------------//
 // Process Declaration
 //----------------------------------------//
@@ -46,9 +48,6 @@ module pulse_width_counter (
       end
     end
   end
-
-  wire wVd_rise = (rVd_sync[2:1] == 2'b01);
-  wire wVd_fall = (rVd_sync[2:1] == 2'b10);
 
   always @(posedge CLK48MHz) begin
     rVd_sync <= {rVd_sync[1:0], rVd_clean};

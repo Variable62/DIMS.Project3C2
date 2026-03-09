@@ -13,7 +13,7 @@ module LED_Debug (
     input wire CLK48M, 
     input wire ExtRESETn,  
     input wire [3:0] Mode,  
-    output wire [1:0] LedMode
+    output wire [2:0] LedMode
 );
   //----------------------------------------//
   // Signal Declaration

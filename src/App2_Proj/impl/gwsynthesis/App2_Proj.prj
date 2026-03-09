@@ -7,11 +7,11 @@
         <File path="C:\Users\Asus\Documents\App2_Project\src\App2_Proj\src\LedDebug.v" type="verilog"/>
         <File path="C:\Users\Asus\Documents\App2_Project\src\App2_Proj\src\ModeControl.v" type="verilog"/>
         <File path="C:\Users\Asus\Documents\App2_Project\src\App2_Proj\src\PhaseCounter.v" type="verilog"/>
+        <File path="C:\Users\Asus\Documents\App2_Project\src\App2_Proj\src\PulseWidthCounter.v" type="verilog"/>
         <File path="C:\Users\Asus\Documents\App2_Project\src\App2_Proj\src\ResetGen.v" type="verilog"/>
         <File path="C:\Users\Asus\Documents\App2_Project\src\App2_Proj\src\SendData.v" type="verilog"/>
         <File path="C:\Users\Asus\Documents\App2_Project\src\App2_Proj\src\Top.v" type="verilog"/>
         <File path="C:\Users\Asus\Documents\App2_Project\src\App2_Proj\src\gowin_rpll\pll_module.v" type="verilog"/>
-        <File path="C:\Users\Asus\Documents\App2_Project\src\App2_Proj\src\PulseWidthCounter.v" type="verilog"/>
         <File path="C:\Gowin\Gowin_V1.9.11.02_x64\IDE\data\ipcores\GAO_LITE\GW_AO_0\gw_ao_mem_ctrl.v" type="gao"/>
         <File path="C:\Gowin\Gowin_V1.9.11.02_x64\IDE\data\ipcores\GAO_LITE\GW_AO_0\gw_ao_top.v" type="gao"/>
         <File path="C:\Gowin\Gowin_V1.9.11.02_x64\IDE\data\ipcores\GAO_LITE\GW_CON\gw_con_top.v" type="gao"/>

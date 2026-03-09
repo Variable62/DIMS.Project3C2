@@ -12,27 +12,27 @@
   <Part Number>: GW1NR-LV9QN88PC6/I5
   <Device>: GW1NR-9
   <Device Version>: C
-  <Created Time>:Fri Mar  6 07:07:26 2026
+  <Created Time>:Sun Mar  8 18:53:01 2026
 
 
 2. PnR Details
 
   Running placement:
-    Placement Phase 0: CPU time = 0h 0m 0.08s, Elapsed time = 0h 0m 0.079s
-    Placement Phase 1: CPU time = 0h 0m 0.16s, Elapsed time = 0h 0m 0.16s
-    Placement Phase 2: CPU time = 0h 0m 0.057s, Elapsed time = 0h 0m 0.058s
-    Placement Phase 3: CPU time = 0h 0m 1s, Elapsed time = 0h 0m 1s
+    Placement Phase 0: CPU time = 0h 0m 0.06s, Elapsed time = 0h 0m 0.06s
+    Placement Phase 1: CPU time = 0h 0m 0.101s, Elapsed time = 0h 0m 0.101s
+    Placement Phase 2: CPU time = 0h 0m 0.036s, Elapsed time = 0h 0m 0.036s
+    Placement Phase 3: CPU time = 0h 0m 0.879s, Elapsed time = 0h 0m 0.879s
     Total Placement: CPU time = 0h 0m 1s, Elapsed time = 0h 0m 1s
  Running routing:
-    Routing Phase 0: CPU time = 0h 0m 0s, Elapsed time = 0h 0m 0.001s
-    Routing Phase 1: CPU time = 0h 0m 0.2s, Elapsed time = 0h 0m 0.2s
-    Routing Phase 2: CPU time = 0h 0m 0.466s, Elapsed time = 0h 0m 0.466s
+    Routing Phase 0: CPU time = 0h 0m 0.001s, Elapsed time = 0h 0m 0s
+    Routing Phase 1: CPU time = 0h 0m 0.183s, Elapsed time = 0h 0m 0.183s
+    Routing Phase 2: CPU time = 0h 0m 0.377s, Elapsed time = 0h 0m 0.377s
     Routing Phase 3: CPU time = 0h 0m 0s, Elapsed time = 0h 0m 0s
-    Total Routing: CPU time = 0h 0m 0.666s, Elapsed time = 0h 0m 0.667s
+    Total Routing: CPU time = 0h 0m 0.561s, Elapsed time = 0h 0m 0.56s
  Generate output files:
     CPU time = 0h 0m 2s, Elapsed time = 0h 0m 2s
 
- Total Time and Memory Usage: CPU time = 0h 0m 4s, Elapsed time = 0h 0m 4s, Peak memory usage = 294MB
+ Total Time and Memory Usage: CPU time = 0h 0m 3s, Elapsed time = 0h 0m 3s, Peak memory usage = 314MB
 
 
 3. Resource Usage Summary
@@ -49,10 +49,10 @@
     --I/O Register as Latch   | 0/213                               |  0%
     --I/O Register as FF      | 13/213                              |  7%
   CLS                         | 342/4320                            |  8%
-  I/O Port                    | 21/71                               |  30%
-  I/O Buf                     | 21                                  | -
+  I/O Port                    | 22/71                               |  31%
+  I/O Buf                     | 22                                  | -
     --Input Buf               | 13                                  | -
-    --Output Buf              | 8                                   | -
+    --Output Buf              | 9                                   | -
     --Inout Buf               | 0                                   | -
   BSRAM                       | 2/26                                | 8%
     --SDPB                    | 2
@@ -67,7 +67,7 @@
   --------------------------------------
   bank 1   | 6/25        | 24%         
   bank 2   | 9/23        | 40%         
-  bank 3   | 6/23        | 27%         
+  bank 3   | 7/23        | 31%         
   ======================================
 
 
@@ -78,7 +78,7 @@
   ------------------------------------------
   PRIMARY       | 3/8           | 38%
   LW            | 2/8           | 25%
-  GCLK_PIN      | 3/3           | 100%
+  GCLK_PIN      | 2/3           | 67%
   rPLL          | 1/2           | 50%
   ==========================================
 
@@ -103,10 +103,10 @@ Port Name    | Diff Pair | Loc./Bank     | Constraint | Dir.  | Site     | CFG  
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 CLK27        | -         | 52/1          | Y          | in    | IOR17[A] | GCLKT_3         | LVCMOS33   | NA    | UP        | ON        | NONE       | NA         | NA         | OFF             | NA            | 3.3       
 ExtRESETn    | -         | 41/2          | Y          | in    | IOB41[A] | -               | LVCMOS33   | NA    | UP        | ON        | NONE       | NA         | NA         | NA              | NA            | 3.3       
-ESPMode[0]   | -         | 53/1          | Y          | in    | IOR15[B] | DOUT/WE_N       | LVCMOS33   | NA    | NONE      | ON        | NONE       | NA         | NA         | OFF             | NA            | 3.3       
-ESPMode[1]   | -         | 51/1          | Y          | in    | IOR17[B] | GCLKC_3         | LVCMOS33   | NA    | NONE      | ON        | NONE       | NA         | NA         | OFF             | NA            | 3.3       
-ESPMode[2]   | -         | 42/2          | Y          | in    | IOB41[B] | -               | LVCMOS33   | NA    | NONE      | ON        | NONE       | NA         | NA         | NA              | NA            | 3.3       
-ESPMode[3]   | -         | 35/2          | Y          | in    | IOB29[A] | GCLKT_4         | LVCMOS33   | NA    | NONE      | ON        | NONE       | NA         | NA         | NA              | NA            | 3.3       
+ESPMode[0]   | -         | 35/2          | Y          | in    | IOB29[A] | GCLKT_4         | LVCMOS33   | NA    | NONE      | ON        | NONE       | NA         | NA         | NA              | NA            | 3.3       
+ESPMode[1]   | -         | 42/2          | Y          | in    | IOB41[B] | -               | LVCMOS33   | NA    | NONE      | ON        | NONE       | NA         | NA         | NA              | NA            | 3.3       
+ESPMode[2]   | -         | 51/1          | Y          | in    | IOR17[B] | GCLKC_3         | LVCMOS33   | NA    | NONE      | ON        | NONE       | NA         | NA         | OFF             | NA            | 3.3       
+ESPMode[3]   | -         | 53/1          | Y          | in    | IOR15[B] | DOUT/WE_N       | LVCMOS33   | NA    | NONE      | ON        | NONE       | NA         | NA         | OFF             | NA            | 3.3       
 Write        | -         | 68/1          | Y          | in    | IOT42[B] | -               | LVCMOS33   | NA    | NONE      | ON        | NONE       | NA         | NA         | OFF             | NA            | 3.3       
 VdiffPulse   | -         | 76/1          | Y          | in    | IOT37[B] | -               | LVCMOS33   | NA    | UP        | ON        | NONE       | NA         | NA         | OFF             | NA            | 3.3       
 VsPulse      | -         | 77/1          | Y          | in    | IOT37[A] | -               | LVCMOS33   | NA    | NONE      | ON        | NONE       | NA         | NA         | OFF             | NA            | 3.3       
@@ -119,8 +119,9 @@ CountOut[0]  | -         | 38/2          | Y          | out   | IOB31[B] | -    
 CountOut[1]  | -         | 37/2          | Y          | out   | IOB31[A] | -               | LVCMOS33   | 8     | NONE      | NA        | NA         | OFF        | NA         | NA              | NA            | 3.3       
 CountOut[2]  | -         | 36/2          | Y          | out   | IOB29[B] | GCLKC_4         | LVCMOS33   | 8     | NONE      | NA        | NA         | OFF        | NA         | NA              | NA            | 3.3       
 CountOut[3]  | -         | 39/2          | Y          | out   | IOB33[A] | -               | LVCMOS33   | 8     | NONE      | NA        | NA         | OFF        | NA         | NA              | NA            | 3.3       
-LedMode[0]   | -         | 10/3          | Y          | out   | IOL15[A] | GCLKT_6         | LVCMOS18   | 8     | UP        | NA        | NA         | OFF        | NA         | OFF             | NA            | 1.8       
-LedMode[1]   | -         | 11/3          | Y          | out   | IOL16[B] | -               | LVCMOS18   | 8     | UP        | NA        | NA         | OFF        | NA         | OFF             | NA            | 1.8       
+LedMode[0]   | -         | 14/3          | Y          | out   | IOL22[B] | -               | LVCMOS18   | 8     | UP        | NA        | NA         | OFF        | NA         | OFF             | NA            | 1.8       
+LedMode[1]   | -         | 15/3          | Y          | out   | IOL25[B] | -               | LVCMOS18   | 8     | UP        | NA        | NA         | OFF        | NA         | OFF             | NA            | 1.8       
+LedMode[2]   | -         | 16/3          | Y          | out   | IOL26[B] | -               | LVCMOS18   | 8     | UP        | NA        | NA         | OFF        | NA         | OFF             | NA            | 1.8       
 tdo_pad_o    | -         | 8/3           | N          | out   | IOL13[A] | TDO             | LVCMOS18   | 8     | UP        | NA        | NA         | OFF        | NA         | OFF             | NA            | 1.8       
 ====================================================================================================================================================================================================================
 
@@ -168,14 +169,14 @@ Loc./Bank| Signal       | Dir.  | Site     | CFG             | IO Type  | Drive 
 32/2     | -            | in    | IOB15[B] | -               | LVCMOS33 | NA    | UP        | ON        | NONE       | NA         | NA         | NA              | NA            | 3.3  
 33/2     | -            | in    | IOB23[A] | -               | LVCMOS33 | NA    | UP        | ON        | NONE       | NA         | NA         | NA              | NA            | 3.3  
 34/2     | -            | in    | IOB23[B] | -               | LVCMOS33 | NA    | UP        | ON        | NONE       | NA         | NA         | NA              | NA            | 3.3  
-35/2     | ESPMode[3]   | in    | IOB29[A] | GCLKT_4         | LVCMOS33 | NA    | NONE      | ON        | NONE       | NA         | NA         | NA              | NA            | 3.3  
+35/2     | ESPMode[0]   | in    | IOB29[A] | GCLKT_4         | LVCMOS33 | NA    | NONE      | ON        | NONE       | NA         | NA         | NA              | NA            | 3.3  
 36/2     | CountOut[2]  | out   | IOB29[B] | GCLKC_4         | LVCMOS33 | 8     | NONE      | NA        | NA         | OFF        | NA         | NA              | NA            | 3.3  
 37/2     | CountOut[1]  | out   | IOB31[A] | -               | LVCMOS33 | 8     | NONE      | NA        | NA         | OFF        | NA         | NA              | NA            | 3.3  
 38/2     | CountOut[0]  | out   | IOB31[B] | -               | LVCMOS33 | 8     | NONE      | NA        | NA         | OFF        | NA         | NA              | NA            | 3.3  
 39/2     | CountOut[3]  | out   | IOB33[A] | -               | LVCMOS33 | 8     | NONE      | NA        | NA         | OFF        | NA         | NA              | NA            | 3.3  
 40/2     | -            | in    | IOB33[B] | -               | LVCMOS33 | NA    | UP        | ON        | NONE       | NA         | NA         | NA              | NA            | 3.3  
 41/2     | ExtRESETn    | in    | IOB41[A] | -               | LVCMOS33 | NA    | UP        | ON        | NONE       | NA         | NA         | NA              | NA            | 3.3  
-42/2     | ESPMode[2]   | in    | IOB41[B] | -               | LVCMOS33 | NA    | NONE      | ON        | NONE       | NA         | NA         | NA              | NA            | 3.3  
+42/2     | ESPMode[1]   | in    | IOB41[B] | -               | LVCMOS33 | NA    | NONE      | ON        | NONE       | NA         | NA         | NA              | NA            | 3.3  
 47/2     | -            | in    | IOB43[B] | -               | LVCMOS33 | NA    | UP        | ON        | NONE       | NA         | NA         | NA              | NA            | 3.3  
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 p1-14/3  | -            | in    | IOL2[A]  | -               | LVCMOS18 | -     | UP        | -         | -          | -          | -          | -               | -             | -    
@@ -194,9 +195,9 @@ p1-6/3   | -            | in    | IOL9[A]  | GCLKT_7         | LVCMOS18 | -     
 8/3      | tdo_pad_o    | out   | IOL13[A] | TDO             | LVCMOS18 | 8     | UP        | NA        | NA         | OFF        | NA         | OFF             | NA            | 1.8  
 9/3      | -            | in    | IOL13[B] | RECONFIG_N      | LVCMOS18 | NA    | UP        | ON        | NONE       | NA         | NA         | NA              | NA            | 1.8  
 p1-5/3   | -            | in    | IOL14[A] | DONE            | LVCMOS18 | -     | UP        | -         | -          | -          | -          | -               | -             | -    
-10/3     | LedMode[0]   | out   | IOL15[A] | GCLKT_6         | LVCMOS18 | 8     | UP        | NA        | NA         | OFF        | NA         | OFF             | NA            | 1.8  
+10/3     | -            | in    | IOL15[A] | GCLKT_6         | LVCMOS18 | NA    | UP        | ON        | NONE       | NA         | NA         | NA              | NA            | 1.8  
 p1-4/3   | -            | in    | IOL16[A] | -               | LVCMOS18 | -     | UP        | -         | -          | -          | -          | -               | -             | -    
-11/3     | LedMode[1]   | out   | IOL16[B] | -               | LVCMOS18 | 8     | UP        | NA        | NA         | OFF        | NA         | OFF             | NA            | 1.8  
+11/3     | -            | in    | IOL16[B] | -               | LVCMOS18 | NA    | UP        | ON        | NONE       | NA         | NA         | NA              | NA            | 1.8  
 p1-2/3   | -            | in    | IOL17[A] | -               | LVCMOS18 | -     | UP        | -         | -          | -          | -          | -               | -             | -    
 p1-3/3   | -            | in    | IOL17[B] | -               | LVCMOS18 | -     | UP        | -         | -          | -          | -          | -               | -             | -    
 p2-14/3  | -            | in    | IOL18[A] | -               | LVCMOS18 | -     | UP        | -         | -          | -          | -          | -               | -             | -    
@@ -206,14 +207,14 @@ p2-11/3  | -            | in    | IOL20[B] | -               | LVCMOS18 | -     
 p2-10/3  | -            | in    | IOL21[A] | -               | LVCMOS18 | -     | UP        | -         | -          | -          | -          | -               | -             | -    
 13/3     | -            | in    | IOL21[B] | -               | LVCMOS18 | NA    | UP        | ON        | NONE       | NA         | NA         | NA              | NA            | 1.8  
 p2-9/3   | -            | in    | IOL22[A] | -               | LVCMOS18 | -     | UP        | -         | -          | -          | -          | -               | -             | -    
-14/3     | -            | in    | IOL22[B] | -               | LVCMOS18 | NA    | UP        | ON        | NONE       | NA         | NA         | NA              | NA            | 1.8  
+14/3     | LedMode[0]   | out   | IOL22[B] | -               | LVCMOS18 | 8     | UP        | NA        | NA         | OFF        | NA         | OFF             | NA            | 1.8  
 p2-8/3   | -            | in    | IOL23[A] | -               | LVCMOS18 | -     | UP        | -         | -          | -          | -          | -               | -             | -    
 p2-7/3   | -            | in    | IOL23[B] | -               | LVCMOS18 | -     | UP        | -         | -          | -          | -          | -               | -             | -    
 p2-6/3   | -            | in    | IOL24[B] | -               | LVCMOS18 | -     | UP        | -         | -          | -          | -          | -               | -             | -    
 p2-5/3   | -            | in    | IOL25[A] | -               | LVCMOS18 | -     | UP        | -         | -          | -          | -          | -               | -             | -    
-15/3     | -            | in    | IOL25[B] | -               | LVCMOS18 | NA    | UP        | ON        | NONE       | NA         | NA         | NA              | NA            | 1.8  
+15/3     | LedMode[1]   | out   | IOL25[B] | -               | LVCMOS18 | 8     | UP        | NA        | NA         | OFF        | NA         | OFF             | NA            | 1.8  
 p2-4/3   | -            | in    | IOL26[A] | -               | LVCMOS18 | -     | UP        | -         | -          | -          | -          | -               | -             | -    
-16/3     | -            | in    | IOL26[B] | -               | LVCMOS18 | NA    | UP        | ON        | NONE       | NA         | NA         | NA              | NA            | 1.8  
+16/3     | LedMode[2]   | out   | IOL26[B] | -               | LVCMOS18 | 8     | UP        | NA        | NA         | OFF        | NA         | OFF             | NA            | 1.8  
 p2-3/3   | -            | in    | IOL27[A] | -               | LVCMOS18 | -     | UP        | -         | -          | -          | -          | -               | -             | -    
 p2-2/3   | -            | in    | IOL27[B] | -               | LVCMOS18 | -     | UP        | -         | -          | -          | -          | -               | -             | -    
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -226,9 +227,9 @@ p2-2/3   | -            | in    | IOL27[B] | -               | LVCMOS18 | -     
 56/1     | -            | in    | IOR14[A] | SO/D1           | LVCMOS33 | NA    | UP        | ON        | NONE       | NA         | NA         | NA              | NA            | 3.3  
 55/1     | -            | in    | IOR14[B] | SSPI_CS_N/D0    | LVCMOS33 | NA    | UP        | ON        | NONE       | NA         | NA         | NA              | NA            | 3.3  
 54/1     | -            | in    | IOR15[A] | DIN/CLKHOLD_N   | LVCMOS33 | NA    | UP        | ON        | NONE       | NA         | NA         | NA              | NA            | 3.3  
-53/1     | ESPMode[0]   | in    | IOR15[B] | DOUT/WE_N       | LVCMOS33 | NA    | NONE      | ON        | NONE       | NA         | NA         | OFF             | NA            | 3.3  
+53/1     | ESPMode[3]   | in    | IOR15[B] | DOUT/WE_N       | LVCMOS33 | NA    | NONE      | ON        | NONE       | NA         | NA         | OFF             | NA            | 3.3  
 52/1     | CLK27        | in    | IOR17[A] | GCLKT_3         | LVCMOS33 | NA    | UP        | ON        | NONE       | NA         | NA         | OFF             | NA            | 3.3  
-51/1     | ESPMode[1]   | in    | IOR17[B] | GCLKC_3         | LVCMOS33 | NA    | NONE      | ON        | NONE       | NA         | NA         | OFF             | NA            | 3.3  
+51/1     | ESPMode[2]   | in    | IOR17[B] | GCLKC_3         | LVCMOS33 | NA    | NONE      | ON        | NONE       | NA         | NA         | OFF             | NA            | 3.3  
 50/1     | -            | in    | IOR22[B] | -               | LVCMOS33 | NA    | UP        | ON        | NONE       | NA         | NA         | NA              | NA            | 3.3  
 49/1     | -            | in    | IOR24[A] | -               | LVCMOS33 | NA    | UP        | ON        | NONE       | NA         | NA         | NA              | NA            | 3.3  
 48/1     | -            | in    | IOR24[B] | -               | LVCMOS33 | NA    | UP        | ON        | NONE       | NA         | NA         | NA              | NA            | 3.3  

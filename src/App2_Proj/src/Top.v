@@ -20,7 +20,7 @@ module top(
 
     output  wire    Req,
     output  wire    [3:0] CountOut, // To ESP
-    output  wire    [1:0] LedMode
+    output  wire    [2:0] LedMode
 );
     //--- Internal Signals ---
     wire        wPll_RESETn;
@@ -93,7 +93,7 @@ module top(
         .CLK48MHz(wPll_Clk),
         .RESETn(wFg_RESETn),
         .start(rFinalDone),       
-        .CountPhase(rFinalCount),   
+        .FinalCount(rFinalCount),   
         .ACK(ACK),
         .Req(Req),
         .CountOut(CountOut) 

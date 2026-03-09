@@ -15,6 +15,7 @@ module phase_counter (
     input  wire [ 3:0] Mode,
     input  wire        VdiffPulse,
     input  wire        VsPulse,
+    
     output reg         Done,
     output reg  [18:0] CountPhase
 );
