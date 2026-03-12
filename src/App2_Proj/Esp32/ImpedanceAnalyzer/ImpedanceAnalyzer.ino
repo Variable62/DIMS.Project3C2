@@ -18,17 +18,28 @@
 
 Adafruit_MCP4725 dac;
 
-// *** ต้องวาง struct ไว้ตรงนี้เพื่อให้ฟังก์ชันข้างล่างรู้จัก ***
 struct MeasResult {
     uint32_t count;
     float degree;
 };
 
 uint8_t freqMode = 0;     
-uint8_t measureMode = 5;  
-uint16_t currentDacValue = 2048; 
+uint8_t measureMode = 4;   
+uint16_t currentDacValue = 3385; 
+
+// --- Calibration Settings ---
+// หลังจากวัดค่าบันได 16 ขั้นแล้ว ให้เอาค่ามาแก้ตรงนี้ครับ
+float calFactor = 1.0656; // ตัวอย่าง: สั่ง 3385 แต่ออกจริงน้อยไป ต้องคูณเพิ่ม
 
 // --- Functions ---
+
+// ฟังก์ชันส่งค่าเข้า DAC แบบมีการ Calibrate
+void setDacVoltage(uint16_t rawValue, bool writeEEPROM = false) {
+    uint32_t calValue = (uint32_t)(rawValue * calFactor);
+    if (calValue > 4095) calValue = 4095;
+    dac.setVoltage((uint16_t)calValue, writeEEPROM);
+}
+
 void triggerWrite() {
   digitalWrite(WRITE, HIGH);
   delayMicroseconds(20); 
@@ -44,6 +55,30 @@ void sendMode(uint8_t modeValue) {
   triggerWrite(); 
 }
 
+// ฟังก์ชันสร้างสัญญาณบันได 16 ขั้น ตามที่อาจารย์สั่ง
+void runDacCalibration() {
+  Serial.println("\n--- [DAC CALIBRATION MODE: MANUAL STEP] ---");
+  Serial.println("Type anything and press Enter to go to the next step...");
+  
+  for (int step = 0; step < 16; step++) {
+    uint16_t dacVal = step << 8; 
+    dac.setVoltage(dacVal, false);
+    
+    Serial.printf("\n[Step %d/15] DAC Value: %4d | Binary: %04b", step, dacVal, step);
+    Serial.print(" -> Waiting for your measurement...");
+
+    // หยุดรอจนกว่าจะมีคนพิมพ์อะไรส่งมาใน Serial
+    while (Serial.available() == 0) {
+        // รอเฉยๆ
+    }
+    Serial.readString(); // อ่านทิ้งเพื่อเคลียร์บัฟเฟอร์สำหรับรอบหน้า
+  }
+  
+  Serial.println("\n--- CALIBRATION DONE ---");
+  // คืนค่าเดิม
+  if (measureMode == 4) dac.setVoltage(0, false);
+  else setDacVoltage(currentDacValue);
+}
 uint32_t getCountFromFPGA() {
     uint32_t fullData = 0; 
     for (int i = 0; i < 5; i++) {
@@ -67,16 +102,11 @@ MeasResult getMeasurement(int samples) {
     MeasResult res = {0, -1.0};
     uint64_t sumCount = 0;
     int countValid = 0;
-    
     for (int i = 0; i < samples; i++) {
         uint32_t val = getCountFromFPGA();
-        if (val > 0) {
-            sumCount += val;
-            countValid++;
-        }
+        if (val > 0) { sumCount += val; countValid++; }
         delay(5);
     }
-    
     if (countValid > 0) {
         res.count = (uint32_t)(sumCount / countValid);
         float T_val = (freqMode == 0) ? 480.0 : (freqMode == 1) ? 4800.0 : (freqMode == 2) ? 48000.0 : 480000.0;
@@ -85,48 +115,9 @@ MeasResult getMeasurement(int samples) {
     return res;
 }
 
-void runSAR() {
-  Serial.println("\n********************************************************************");
-  Serial.println(">>> [SAR START] TARGET 60.0 DEG <<<");
-  Serial.println("Bit |   DAC |  Vdac(V) |    Count |  Degree | Status");
-  Serial.println("--------------------------------------------------------------------");
-  
-  uint16_t sarResult = 0;
-  sendMode(5); 
-
-  for (int i = 11; i >= 0; i--) {
-    uint16_t testValue = sarResult | (1 << i);
-    dac.setVoltage(testValue, false);
-    delay(100); 
-
-    MeasResult res = getMeasurement(2); 
-    float v_dac = (testValue * 3.3) / 4095.0;
-    
-    if (res.degree >= 0) {
-      if (res.degree < 60.0) {
-        sarResult = testValue; 
-        Serial.printf("%3d | %5d | %8.3f | %8d | %7.2f | KEEP\n", i, testValue, v_dac, res.count, res.degree);
-      } else {
-        Serial.printf("%3d | %5d | %8.3f | %8d | %7.2f | DROP\n", i, testValue, v_dac, res.count, res.degree);
-      }
-    } else {
-      Serial.printf("%3d | %5d | %8.3f |    ERR   |   ERR   | NO SIGNAL\n", i, testValue, v_dac);
-    }
-  }
-  currentDacValue = sarResult;
-  dac.setVoltage(currentDacValue, false);
-  float final_v = (currentDacValue * 3.3) / 4095.0;
-  Serial.println("--------------------------------------------------------------------");
-  Serial.printf(">>> [SAR DONE] FINAL DAC: %d (%.3f V)\n", currentDacValue, final_v);
-  Serial.println("********************************************************************\n");
-}
-
 void setup() {
   Serial.begin(115200);
   Wire.begin();
-  Wire.setClock(100000); 
-  Wire.setTimeOut(50); 
-
   if (!dac.begin(0x61)) Serial.println("MCP4725 not found!");
 
   pinMode(MODE0, OUTPUT); pinMode(MODE1, OUTPUT);
@@ -143,53 +134,62 @@ void setup() {
   digitalWrite(WRITE, LOW);
   
   sendMode(measureMode); 
-  dac.setVoltage(currentDacValue, false);
+  if(measureMode == 4) dac.setVoltage(0, false);
+  else setDacVoltage(currentDacValue);
   
   Serial.println("\n--- [SYSTEM READY] ---");
-  Serial.println("- Type 's' to Start Auto SAR");
+  Serial.println("Commands: 'c' for Calibrate, 's' for SAR");
 }
 
 void loop() {
+  // รับคำสั่งจาก Serial
   if (Serial.available() > 0) {
-    String input = Serial.readStringUntil('\n');
-    input.trim();
-    
-    if (input.equalsIgnoreCase("s")) {
-      runSAR();
-    } else if (input.length() > 0) {
-      long val = -1;
-      if (input.startsWith("b") || input.startsWith("B")) {
-        val = strtol(input.substring(1).c_str(), NULL, 2);
-      } else {
-        val = input.toInt();
-      }
-
-      if (val >= 0 && val <= 4095) {
-        currentDacValue = (uint16_t)val;
-        dac.setVoltage(currentDacValue, false);
-        float v = (currentDacValue * 3.3) / 4095.0;
-        Serial.printf(">>> DAC Manual Set: %d (%.3f V)\n", currentDacValue, v);
-      }
-    }
+    char cmd = Serial.read();
+    if (cmd == 'c') runDacCalibration();
   }
 
+  // ส่วนสลับความถี่
+  static bool lastF = HIGH;
+  bool cf = digitalRead(SW_FREQ);
+  if (lastF == HIGH && cf == LOW) {
+    delay(50); 
+    if(digitalRead(SW_FREQ) == LOW) { 
+      freqMode = (freqMode + 1) % 4; 
+      sendMode(freqMode); 
+      Serial.printf(">> Freq Switched: %d\n", freqMode);
+    }
+  }
+  lastF = cf;
+
+  // ส่วนสลับโหมดวัด
+  static bool lastT = HIGH;
+  bool ct = digitalRead(SW_TYPE);
+  if (lastT == HIGH && ct == LOW) {
+    delay(50); 
+    if(digitalRead(SW_TYPE) == LOW) { 
+      measureMode = (measureMode == 4) ? 5 : 4; 
+      sendMode(measureMode); 
+      
+      if (measureMode == 4) dac.setVoltage(0, false); 
+      else setDacVoltage(currentDacValue);   
+      
+      uint32_t waitTime = millis();
+      while(digitalRead(REQ) == HIGH && (millis() - waitTime < 200)) getCountFromFPGA(); 
+      
+      Serial.printf("\n>> MODE: %s\n", (measureMode == 4 ? "PHASE" : "WIDTH"));
+    }
+  }
+  lastT = ct;
+
+  // อ่านค่าและแสดงผล
   if (digitalRead(REQ) == HIGH) {
     MeasResult res = getMeasurement(1);
     if (res.degree >= 0) {
-      float v_dac = (currentDacValue * 3.3) / 4095.0;
-      Serial.printf("%s | M:%d | Count:%-8d | Deg:%6.2f | DAC:%4d | Vdac:%.3fV\n", 
-                    (measureMode == 4 ? "PHASE" : "WIDTH"), freqMode, res.count, res.degree, currentDacValue, v_dac);
+      float v_actual = (measureMode == 4) ? 0 : (currentDacValue * 3.3 * calFactor) / 4095.0;
+      Serial.printf("%s | M:%d | Count:%-8d | Deg:%6.2f | DAC:%4d | Vdac_est:%.3fV\n", 
+                    (measureMode == 4 ? "PHASE" : "WIDTH"), freqMode, res.count, res.degree, 
+                    (measureMode == 4 ? 0 : currentDacValue), v_actual);
       delay(300); 
     }
   }
-
-  static bool lastF = HIGH, lastT = HIGH;
-  bool cf = digitalRead(SW_FREQ), ct = digitalRead(SW_TYPE);
-  if (lastF == HIGH && cf == LOW) {
-    delay(50); if(digitalRead(SW_FREQ)==LOW) { freqMode=(freqMode+1)%4; sendMode(freqMode); }
-  }
-  if (lastT == HIGH && ct == LOW) {
-    delay(50); if(digitalRead(SW_TYPE)==LOW) { measureMode=(measureMode==4)?5:4; sendMode(measureMode); }
-  }
-  lastF = cf; lastT = ct;
 }
