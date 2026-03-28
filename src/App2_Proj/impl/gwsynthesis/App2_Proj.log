@@ -29,7 +29,7 @@ Compiling module 'LED_Debug'("C:\Users\Asus\Documents\App2_Project\src\App2_Proj
 WARN  (EX3791) : Expression size 4 truncated to fit in target size 2("C:\Users\Asus\Documents\App2_Project\src\App2_Proj\src\LedDebug.v":32)
 Compiling module 'ModeControl'("C:\Users\Asus\Documents\App2_Project\src\App2_Proj\src\ModeControl.v":12)
 Compiling module 'phase_counter'("C:\Users\Asus\Documents\App2_Project\src\App2_Proj\src\PhaseCounter.v":12)
-WARN  (EX3791) : Expression size 20 truncated to fit in target size 19("C:\Users\Asus\Documents\App2_Project\src\App2_Proj\src\PhaseCounter.v":67)
+WARN  (EX3791) : Expression size 20 truncated to fit in target size 19("C:\Users\Asus\Documents\App2_Project\src\App2_Proj\src\PhaseCounter.v":68)
 Compiling module 'pulse_width_counter'("C:\Users\Asus\Documents\App2_Project\src\App2_Proj\src\PulseWidthCounter.v":12)
 Compiling module 'ResetGen_Module'("C:\Users\Asus\Documents\App2_Project\src\App2_Proj\src\ResetGen.v":13)
 Compiling module 'data_sender'("C:\Users\Asus\Documents\App2_Project\src\App2_Proj\src\SendData.v":12)

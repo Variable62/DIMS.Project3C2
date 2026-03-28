@@ -26,8 +26,8 @@ module phase_counter (
   reg  [ 2:0] rVd_sync;
   reg  [18:0] rCounter;
   reg         rCounting;
-  wire        wVs_rise = (rVs_sync[2:1] == 2'b01);
-  wire        wVd_rise = (rVd_sync[2:1] == 2'b01);
+ wire wVs_fall = (rVs_sync[2:1] == 2'b10); 
+  wire wVd_fall = (rVd_sync[2:1] == 2'b10);
 
   always @(posedge CLK48MHz) begin
     rVs_sync <= {rVs_sync[1:0], VsPulse};
@@ -36,7 +36,7 @@ module phase_counter (
 //----------------------------------------//
 // Process Declaration
 //----------------------------------------//
-  always @(posedge CLK48MHz or negedge RESETn) begin
+ always @(posedge CLK48MHz or negedge RESETn) begin
     if (!RESETn) begin
       rCounter   <= 19'd0;
       rCounting  <= 1'b0;
@@ -45,27 +45,23 @@ module phase_counter (
     end else begin
       Done <= 1'b0;  
 
-      // Found Vs ==> (Auto-Reset)
-      if (wVs_rise) begin
-        rCounter  <= 19'd0;
-        rCounting <= 1'b1;
+      if (wVs_fall) begin
+        rCounter   <= 19'd0;
+        rCounting  <= 1'b1;
       end 
-            
-            // Stop when found VdiffPulse
-      else if (wVd_rise && rCounting) begin
+
+      else if (wVd_fall && rCounting) begin
         rCounting  <= 1'b0;
         CountPhase <= rCounter; 
         Done       <= 1'b1;  
       end
-            
-            // 3 Protect Timeout
-      else if (rCounter == 19'h7FFFF) begin
-        rCounting <= 1'b0;
-      end
 
       else if (rCounting) begin
-        rCounter <= rCounter + 1;
+        if (rCounter < 19'h7FFFF) 
+            rCounter <= rCounter + 1;
+        else
+            rCounting <= 1'b0;
       end
     end
   end
-endmodule
+  endmodule

@@ -12,6 +12,7 @@
 module top(
     input   wire    CLK27,
     input   wire    ExtRESETn,
+
     input   wire    [3:0] ESPMode,
     input   wire    Write,
     input   wire    VdiffPulse,
